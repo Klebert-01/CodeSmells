@@ -1,8 +1,4 @@
-﻿using GameResources.Data;
-
-namespace GameResources.GameLogic;
-
-public static class MooGameLogic
+﻿public static class MooGameLogic
 {
     public static string makeGoal()    //does a lot of things, extract to smaller methods 
     {

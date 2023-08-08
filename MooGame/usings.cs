@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿global using GameResources.GameLogic;
 
-namespace MooGame
-{
-    internal class Usings
-    {
-    }
-}
+global using GameResources.Data;
+global using static GameResources.Data.PlayerData;
