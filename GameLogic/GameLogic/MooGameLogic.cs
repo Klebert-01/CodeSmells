@@ -1,5 +1,21 @@
-﻿public static class MooGameLogic    //borde ligga i moogameprojektet och sen ärva av ett gamelogic interface? 
+﻿public static class MooGameLogic
 {
+    public static void StartNewGame()
+    {
+        CreateTargetNumber();
+    }
+    
+    private static bool PlayerGuessIsInvalid(string guess)
+    {
+        if(guess.Length != 4)
+        {
+            return true;
+        }
+        return false;
+    }
+
+
+
     public static string CreateTargetNumber() 
     {
         Random numberGenerator = new();
@@ -9,12 +25,20 @@
     }
 
     /*
-     * method does a few different things: keeps track of bulls and cows, error handling for wrong input, and more?
+     * method does a few different things: keeps track of bulls and cows(bulls and cows kanske eget objekt?), error handling for wrong input, and more?
      */
-    public static string CheckPlayerGuess(string goal, string guess)
+    public static string CheckPlayerGuess(string goal, string guess) //switch places goal and guess as params to guess, goal
     {
-        int cows = 0, bulls = 0;
-        guess += "    ";     // if player entered less than 4 chars
+        int cows = 0, bulls = 0; //gör om till eget "bullsandcows" objekt och sätt dessa till default i konstruktorn
+
+
+
+        if (PlayerGuessIsInvalid(guess))
+        {
+            return "guess must be exactly 4 digits long";
+        }
+
+
         for (int i = 0; i < 4; i++)
         {
             for (int j = 0; j < 4; j++)
