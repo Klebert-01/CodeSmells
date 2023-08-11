@@ -8,7 +8,7 @@ string name = Console.ReadLine();
 while (playOn)
 {
 
-    string goal = MooGameLogic.makeGoal();
+    string goal = MooGameLogic.CreateTargetNumber();
 
 
     Console.WriteLine("New game:\n");   //method returning string in the VIEW project
@@ -21,24 +21,24 @@ while (playOn)
     string guess = Console.ReadLine();  // TODO parse to int directly
 
     int nGuess = 1;
-    string bbcc = MooGameLogic.checkBC(goal, guess);
+    string bbcc = MooGameLogic.CheckPlayerGuess(goal, guess);
 
     #region DisplayGuess?
     Console.WriteLine(bbcc + "\n");
     #endregion
-22
+
     while (bbcc != "BBBB,")
     {
         nGuess++;
         guess = Console.ReadLine();
         Console.WriteLine(guess + "\n");
-        bbcc = MooGameLogic.checkBC(goal, guess);
+        bbcc = MooGameLogic.CheckPlayerGuess(goal, guess);
         Console.WriteLine(bbcc + "\n");
     }
     StreamWriter output = new StreamWriter("result.txt", append: true);
     output.WriteLine(name + "#&#" + nGuess);
     output.Close();
-    MooGameLogic.showTopList();
+    MooGameLogic.DisplayHighscore();
     Console.WriteLine("Correct, it took " + nGuess + " guesses\nContinue?");
     string answer = Console.ReadLine();
     if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
@@ -46,4 +46,3 @@ while (playOn)
         playOn = false;
     }
 }
-§

@@ -1,28 +1,39 @@
 ﻿public static class MooGameLogic    //borde ligga i moogameprojektet och sen ärva av ett gamelogic interface? 
-{
-    public static string makeGoal()    //does a lot of things, extract to smaller methods 
-    {
-        Random randomGenerator = new Random(); //creates new random object
-        string goal = "";
-        for (int i = 0; i < 4; i++)
-        {
-            int random = randomGenerator.Next(10);
-            string randomDigit = "" + random;
 
-            while (goal.Contains(randomDigit))
-            {
-                random = randomGenerator.Next(10);
-                randomDigit = "" + random;
-            }
-            goal = goal + randomDigit; // change to += operator
-        }
-        return goal;
+
+{
+    public static string CreateTargetNumber()    //does a lot of things, extract to smaller methods 
+    {
+
+        Random numberGenerator = new();
+
+        int targetNumber = numberGenerator.Next(10000);
+
+        return targetNumber.ToString();
+
+        //Random numberGenerator = new(); //creates new random object
+
+        //string targetNumber = "";
+
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    int random = numberGenerator.Next(10);
+        //    string randomDigit = "" + random;
+
+        //    while (targetNumber.Contains(randomDigit))
+        //    {
+        //        random = numberGenerator.Next(10);
+        //        randomDigit = "" + random;
+        //    }
+        //    targetNumber += randomDigit;
+        //}
+        //return targetNumber;
     }
 
     /*
      * method does a few different things: keeps track of bulls and cows, error handling for wrong input, and more?
      */
-    public static string checkBC(string goal, string guess)
+    public static string CheckPlayerGuess(string goal, string guess)
     {
         int cows = 0, bulls = 0;
         guess += "    ";     // if player entered less than 4 chars
@@ -46,7 +57,7 @@
         return "BBBB".Substring(0, bulls) + "," + "CCCC".Substring(0, cows);
     }
 
-    public static void showTopList() //method for getting and writing highscores
+    public static void DisplayHighscore() //method for getting and writing highscores
     {
 
         StreamReader input = new StreamReader("result.txt");
