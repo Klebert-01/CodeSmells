@@ -1,33 +1,11 @@
 ﻿public static class MooGameLogic    //borde ligga i moogameprojektet och sen ärva av ett gamelogic interface? 
-
-
 {
-    public static string CreateTargetNumber()    //does a lot of things, extract to smaller methods 
+    public static string CreateTargetNumber() 
     {
-
         Random numberGenerator = new();
-
         int targetNumber = numberGenerator.Next(10000);
 
         return targetNumber.ToString();
-
-        //Random numberGenerator = new(); //creates new random object
-
-        //string targetNumber = "";
-
-        //for (int i = 0; i < 4; i++)
-        //{
-        //    int random = numberGenerator.Next(10);
-        //    string randomDigit = "" + random;
-
-        //    while (targetNumber.Contains(randomDigit))
-        //    {
-        //        random = numberGenerator.Next(10);
-        //        randomDigit = "" + random;
-        //    }
-        //    targetNumber += randomDigit;
-        //}
-        //return targetNumber;
     }
 
     /*
