@@ -17,10 +17,12 @@ while (playOn)
     //comment out or remove next line to play real games!
     Console.WriteLine("For practice, number is: " + goal + "\n");
     #endregion
+
     string guess = Console.ReadLine();  // TODO parse to int directly
 
     int nGuess = 1;
     string bbcc = MooGameLogic.checkBC(goal, guess);
+
     #region DisplayGuess?
     Console.WriteLine(bbcc + "\n");
     #endregion

@@ -1,4 +1,4 @@
-﻿public static class MooGameLogic
+﻿public static class MooGameLogic    //borde ligga i moogameprojektet och sen ärva av ett gamelogic interface? 
 {
     public static string makeGoal()    //does a lot of things, extract to smaller methods 
     {
