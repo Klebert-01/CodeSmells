@@ -2,7 +2,7 @@
 {
     public static void StartNewGame()
     {
-        CreateTargetNumber();
+        CreateRandomNumber();
     }
     
     private static bool PlayerGuessIsInvalid(string guess)
@@ -16,7 +16,7 @@
 
 
 
-    public static string CreateTargetNumber() 
+    public static string CreateRandomNumber() 
     {
         Random numberGenerator = new();
         int targetNumber = numberGenerator.Next(10000);
@@ -24,9 +24,6 @@
         return targetNumber.ToString();
     }
 
-    /*
-     * method does a few different things: keeps track of bulls and cows(bulls and cows kanske eget objekt?), error handling for wrong input, and more?
-     */
     public static string CheckPlayerGuess(string goal, string guess) //switch places goal and guess as params to guess, goal
     {
         int cows = 0, bulls = 0; //gör om till eget "bullsandcows" objekt och sätt dessa till default i konstruktorn
@@ -59,10 +56,10 @@
         return "BBBB".Substring(0, bulls) + "," + "CCCC".Substring(0, cows);
     }
 
-    public static void DisplayHighscore() //method for getting and writing highscores
+    public static void DisplayHighscore() //method for getting and writing highscores SHOULD USE JSON INSTEAD
     {
 
-        StreamReader input = new StreamReader("result.txt");
+        StreamReader input = new StreamReader("result.txt"); //store as json instead
         List<PlayerData> results = new List<PlayerData>();
         string line;
         while ((line = input.ReadLine()) != null)
@@ -91,7 +88,7 @@
         Console.WriteLine("Player   games average");
         foreach (PlayerData p in results)
         {
-            Console.WriteLine(string.Format("{0,-9}{1,5:D}{2,9:F2}", p.Name, p.NGames, p.Average()));
+            Console.WriteLine(string.Format("{0,-9}{1,5:D}{2,9:F2}", p.Name, p.GamesPlayed, p.Average()));
         }
         input.Close();
     }

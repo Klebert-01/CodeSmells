@@ -1,1 +1,1 @@
-﻿
+﻿global using GameResources.View;

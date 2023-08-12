@@ -2,26 +2,26 @@
 {
 
     public string Name { get; private set; }
-    public int NGames { get; private set; }
-    int totalGuess;
+    public int GamesPlayed { get; private set; }    //only games played for active session? called Nguesses before
+    public int TotalGuesses { get; private set; }   //total guesses per game?
 
 
-    public PlayerData(string name, int guesses)
+    public PlayerData(string name, int totalGuesses)
     {
-        this.Name = name;
-        NGames = 1;
-        totalGuess = guesses;
+        Name = name;
+        GamesPlayed = 1;
+        TotalGuesses = totalGuesses;
     }
 
     public void Update(int guesses)
     {
-        totalGuess += guesses;
-        NGames++;
+        TotalGuesses += guesses;
+        GamesPlayed++;
     }
 
     public double Average()
     {
-        return (double)totalGuess / NGames;
+        return (double)TotalGuesses / GamesPlayed;
     }
 
     // no references to this in proj what is the purpose
