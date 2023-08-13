@@ -2,6 +2,8 @@
 
 public class HighscoreManager
 {
+
+
     public void GetHighscore()
     {
         // implementation here, maybe rename to ReadHighscore
@@ -11,6 +13,8 @@ public class HighscoreManager
     {
         //implementation here
     }
+
+
 }
 
 //public static void DisplayHighscore()
