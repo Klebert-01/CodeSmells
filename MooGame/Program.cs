@@ -1,5 +1,4 @@
-﻿using GameResources.View;
-
+﻿
 var io = new ConsoleIO();
 
 bool playOn = true;
