@@ -40,8 +40,7 @@ while (playOn)
     }
 
     dataAccess.AddHighscore(userName, nGuess);
-
-    MooGameLogic.DisplayHighscore();
+    dataAccess.GetAndDisplayHighscore();
 
     #region DisplayNoOfGuessesAndAskPlayerAboutNewGame
     io.Print($"Correct, it took {nGuess} guesses\nContinue?");
