@@ -2,6 +2,10 @@
 
 public class HighscoreManager
 {
+
+
+
+
     public void GetAndDisplayHighscore() //TODO separate into two methods, Get method returning list of results, display highscore should be in View/IO class? 
     {
         using (var sr = new StreamReader("result.txt"))

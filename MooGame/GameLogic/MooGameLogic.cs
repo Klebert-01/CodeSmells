@@ -1,14 +1,14 @@
 ﻿namespace MooGame.GameLogic;
 
 
-public static class MooGameLogic
+public class MooGameLogic
 {
-    public static void StartNewGame()
+    public void StartNewGame()
     {
         CreateRandomNumber();
     }
     
-    private static bool PlayerGuessIsInvalid(string guess)
+    private bool PlayerGuessIsInvalid(string guess)
     {
         if(guess.Length != 4)
         {
@@ -19,7 +19,7 @@ public static class MooGameLogic
 
 
 
-    public static string CreateRandomNumber() 
+    public string CreateRandomNumber() 
     {
         Random numberGenerator = new();
         int targetNumber = numberGenerator.Next(999,10000);
@@ -27,7 +27,7 @@ public static class MooGameLogic
         return targetNumber.ToString();
     }
 
-    public static string CheckPlayerGuess(string goal, string guess) //switch places goal and guess as params to guess, goal
+    public string CheckPlayerGuess(string goal, string guess) //switch places goal and guess as params to guess, goal
     {
         int cows = 0, bulls = 0; //gör om till eget "bullsandcows" objekt och sätt dessa till default i konstruktorn
 
