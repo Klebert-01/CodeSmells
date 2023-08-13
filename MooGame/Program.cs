@@ -1,5 +1,6 @@
 ﻿
 var io = new ConsoleIO();
+var dataAccess = new HighscoreManager();
 
 bool playOn = true;
 
@@ -38,11 +39,12 @@ while (playOn)
 
     }
 
-    #region WritePlayerScoreToFile
-    StreamWriter output = new StreamWriter("result.txt", append: true);
-    output.WriteLine(userName + "#&#" + nGuess);
-    output.Close();
-    #endregion
+    dataAccess.AddHighscore(userName, nGuess);
+    //#region WritePlayerScoreToFile
+    //StreamWriter output = new StreamWriter("result.txt", append: true);
+    //output.WriteLine(userName + "#&#" + nGuess);
+    //output.Close();
+    //#endregion
 
     MooGameLogic.DisplayHighscore();
 

@@ -9,10 +9,15 @@ public class HighscoreManager
         // implementation here, maybe rename to ReadHighscore
     }
 
-    public void AddHighscore()
+    public void AddHighscore(string userName, int nGuess)   // this should just accept a playerdata object? or a list of playerdata?
     {
-        //implementation here
+        StreamWriter output = new StreamWriter("result.txt", append: true);
+        output.WriteLine(userName + "#&#" + nGuess);
+        output.Close();
     }
+
+
+    // maybe a update highscore method also?
 
 
 }
