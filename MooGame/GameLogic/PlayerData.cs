@@ -1,4 +1,7 @@
-﻿public class PlayerData
+﻿namespace MooGame.GameLogic;
+
+
+public class PlayerData
 {
 
     public string Name { get; private set; }

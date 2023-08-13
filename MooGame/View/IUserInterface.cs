@@ -1,4 +1,6 @@
-﻿public interface IUserInterface
+﻿namespace MooGame.View;
+
+public interface IUserInterface
 {
     string GetPlayerUsername();
     public string GetInput();

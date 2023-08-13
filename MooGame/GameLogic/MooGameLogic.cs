@@ -22,7 +22,7 @@ public static class MooGameLogic
     public static string CreateRandomNumber() 
     {
         Random numberGenerator = new();
-        int targetNumber = numberGenerator.Next(10000);
+        int targetNumber = numberGenerator.Next(999,10000);
 
         return targetNumber.ToString();
     }

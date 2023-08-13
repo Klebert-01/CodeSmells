@@ -1,4 +1,6 @@
-﻿internal class MooGameController
+﻿namespace MooGame.Controllers;
+
+public class MooGameController
 {
 
 }
