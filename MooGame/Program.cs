@@ -1,6 +1,7 @@
 ﻿
 var io = new ConsoleIO();
 var dataAccess = new HighscoreManager();
+var gameLogic = new MooGameLogic();
 
 bool playOn = true;
 
@@ -10,7 +11,7 @@ string userName = io.GetPlayerUsername();
 
 while (playOn)
 {
-    string correctNumber = MooGameLogic.CreateRandomNumber();
+    string correctNumber = gameLogic.CreateRandomNumber();
 
     io.Print("New game:\n");
 
@@ -23,7 +24,7 @@ while (playOn)
     string guess = io.GetInput();  // TODO parse to int directly
 
     int nGuess = 1;
-    string bbcc = MooGameLogic.CheckPlayerGuess(correctNumber, guess);
+    string bbcc = gameLogic.CheckPlayerGuess(correctNumber, guess);
 
     #region DisplayGuess?
     io.Print($"{bbcc} \n");
@@ -34,7 +35,7 @@ while (playOn)
         nGuess++;
         guess = io.GetInput();
         io.Print($"{guess} \n");
-        bbcc = MooGameLogic.CheckPlayerGuess(correctNumber, guess);
+        bbcc = gameLogic.CheckPlayerGuess(correctNumber, guess);
         io.Print($"{bbcc} \n");
 
     }
