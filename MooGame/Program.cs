@@ -40,11 +40,6 @@ while (playOn)
     }
 
     dataAccess.AddHighscore(userName, nGuess);
-    //#region WritePlayerScoreToFile
-    //StreamWriter output = new StreamWriter("result.txt", append: true);
-    //output.WriteLine(userName + "#&#" + nGuess);
-    //output.Close();
-    //#endregion
 
     MooGameLogic.DisplayHighscore();
 
