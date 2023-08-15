@@ -21,22 +21,22 @@ while (playOn)
     #endregion
 
 
-    string guess = io.GetInput();  // TODO parse to int directly
+    string guess = io.GetInput();
 
     int numberOfGuesses = 1;
-    string bbcc = gameLogic.CheckPlayerGuess(correctNumber, guess);
+    string bullsAndCowsResult = gameLogic.CheckPlayerGuess(correctNumber, guess);
 
-    #region DisplayGuess?
-    io.Print($"{bbcc} \n");
+    #region DisplayBullsAndCows
+    io.Print($"{bullsAndCowsResult} \n");
     #endregion
 
-    while (bbcc != "BBBB,")
+    while (bullsAndCowsResult != "BBBB,")
     {
         numberOfGuesses++;
         guess = io.GetInput();
         io.Print($"{guess} \n");
-        bbcc = gameLogic.CheckPlayerGuess(correctNumber, guess);
-        io.Print($"{bbcc} \n");
+        bullsAndCowsResult = gameLogic.CheckPlayerGuess(correctNumber, guess);
+        io.Print($"{bullsAndCowsResult} \n");
 
     }
 
