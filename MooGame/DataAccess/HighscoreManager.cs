@@ -1,6 +1,6 @@
 ﻿namespace MooGame.DataAccess;
 
-public class HighscoreManager
+public class HighscoreManager : IHighscoreManager
 {
 
 
@@ -15,20 +15,23 @@ public class HighscoreManager
             while ((line = reader.ReadLine()) != null)
             {
 
-                string[] nameAndScore = line.Split(new string[] { "#&#" }, StringSplitOptions.None); //weird to store name and score as array and not separate datatypes
+                string[] nameAndScore = line.Split(new string[] { "#&#" }, StringSplitOptions.None);
                 string name = nameAndScore[0];
                 int guesses = Convert.ToInt32(nameAndScore[1]);
 
                 var player = new PlayerData(name, guesses);
-                int playerPosition = highScore.IndexOf(player);
 
-                if (playerPosition < 0)
+                #region CheckPlayerRanking
+                int playerRank = highScore.IndexOf(player);
+                #endregion
+
+                if (playerRank < 0)
                 {
                     highScore.Add(player);
                 }
                 else
                 {
-                    highScore[playerPosition].Update(guesses);
+                    highScore[playerRank].Update(guesses);
                 }
             }
 
@@ -39,7 +42,7 @@ public class HighscoreManager
 
         return highScore;
     }
-    public void DisplayHighscore() //TODO separate into methods, GET returning list of results, DISPLAY highscore should be in View/IO class? 
+    public void DisplayHighscore() // should return the string instead of cw
     {
 
         using (var reader = new StreamReader("result.txt"))
@@ -69,5 +72,6 @@ public class HighscoreManager
         }
     }
     // TODO maybe an update highscore method also?
+
 }
 

@@ -1,16 +1,12 @@
 ﻿namespace MooGame.GameLogic;
 
 
-public class MooGameLogic
+public class MooGameLogic : IMooGameLogic
 {
-    public void StartNewGame()
-    {
-        CreateRandomNumber();
-    }
-    
+
     private bool PlayerGuessIsInvalid(string guess)
     {
-        if(guess.Length != 4)
+        if (guess.Length != 4)
         {
             return true;
         }
@@ -19,10 +15,10 @@ public class MooGameLogic
 
 
 
-    public string CreateRandomNumber() 
+    public string CreateRandomNumber()
     {
         Random numberGenerator = new();
-        int targetNumber = numberGenerator.Next(999,10000);
+        int targetNumber = numberGenerator.Next(999, 10000);
 
         return targetNumber.ToString();
     }

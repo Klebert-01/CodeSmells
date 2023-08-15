@@ -22,7 +22,7 @@ public class PlayerData
         GamesPlayed++;
     }
 
-    public double Average()
+    public double Average() //TODO add property average to playerdata
     {
         return (double)TotalGuesses / GamesPlayed;
     }
