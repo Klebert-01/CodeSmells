@@ -45,6 +45,7 @@ while (playOn)
 
     #region DisplayNoOfGuessesAndAskPlayerAboutNewGame
     io.Print($"Correct, it took {numberOfGuesses} guesses\nContinue?");
+
     string answer = io.GetInput();
     if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
     {
