@@ -1,5 +1,7 @@
 ﻿
 var io = new ConsoleIO();
+var dataAccess = new HighscoreManager();
+var gameLogic = new MooGameLogic();
 
 bool playOn = true;
 
@@ -9,7 +11,7 @@ string userName = io.GetPlayerUsername();
 
 while (playOn)
 {
-    string correctNumber = MooGameLogic.CreateRandomNumber();
+    string correctNumber = gameLogic.CreateRandomNumber();
 
     io.Print("New game:\n");
 
@@ -21,8 +23,8 @@ while (playOn)
 
     string guess = io.GetInput();  // TODO parse to int directly
 
-    int nGuess = 1;
-    string bbcc = MooGameLogic.CheckPlayerGuess(correctNumber, guess);
+    int numberOfGuesses = 1;
+    string bbcc = gameLogic.CheckPlayerGuess(correctNumber, guess);
 
     #region DisplayGuess?
     io.Print($"{bbcc} \n");
@@ -30,24 +32,19 @@ while (playOn)
 
     while (bbcc != "BBBB,")
     {
-        nGuess++;
+        numberOfGuesses++;
         guess = io.GetInput();
         io.Print($"{guess} \n");
-        bbcc = MooGameLogic.CheckPlayerGuess(correctNumber, guess);
+        bbcc = gameLogic.CheckPlayerGuess(correctNumber, guess);
         io.Print($"{bbcc} \n");
 
     }
 
-    #region WritePlayerScoreToFile
-    StreamWriter output = new StreamWriter("result.txt", append: true);
-    output.WriteLine(userName + "#&#" + nGuess);
-    output.Close();
-    #endregion
-
-    MooGameLogic.DisplayHighscore();
+    dataAccess.AddHighscore(userName, numberOfGuesses);
+    dataAccess.DisplayHighscore();
 
     #region DisplayNoOfGuessesAndAskPlayerAboutNewGame
-    io.Print($"Correct, it took {nGuess} guesses\nContinue?");
+    io.Print($"Correct, it took {numberOfGuesses} guesses\nContinue?");
     string answer = io.GetInput();
     if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
     {
