@@ -15,20 +15,23 @@ public class HighscoreManager : IHighscoreManager
             while ((line = reader.ReadLine()) != null)
             {
 
-                string[] nameAndScore = line.Split(new string[] { "#&#" }, StringSplitOptions.None); //weird to store name and score as array and not separate datatypes
+                string[] nameAndScore = line.Split(new string[] { "#&#" }, StringSplitOptions.None);
                 string name = nameAndScore[0];
                 int guesses = Convert.ToInt32(nameAndScore[1]);
 
                 var player = new PlayerData(name, guesses);
-                int playerPosition = highScore.IndexOf(player);
 
-                if (playerPosition < 0)
+                #region CheckPlayerRanking
+                int playerRank = highScore.IndexOf(player);
+                #endregion
+
+                if (playerRank < 0)
                 {
                     highScore.Add(player);
                 }
                 else
                 {
-                    highScore[playerPosition].Update(guesses);
+                    highScore[playerRank].Update(guesses);
                 }
             }
 
