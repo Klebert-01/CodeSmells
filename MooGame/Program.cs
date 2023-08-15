@@ -1,7 +1,7 @@
-﻿
 var io = new ConsoleIO();
 var dataAccess = new HighscoreManager();
 var gameLogic = new MooGameLogic();
+
 
 bool playOn = true;
 
