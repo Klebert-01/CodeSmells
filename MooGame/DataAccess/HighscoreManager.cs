@@ -1,6 +1,6 @@
 ﻿namespace MooGame.DataAccess;
 
-public class HighscoreManager
+public class HighscoreManager : IHighscoreManager
 {
 
 
@@ -39,7 +39,7 @@ public class HighscoreManager
 
         return highScore;
     }
-    public void DisplayHighscore() //TODO separate into methods, GET returning list of results, DISPLAY highscore should be in View/IO class? 
+    public void DisplayHighscore() // should return the string instead of cw
     {
 
         using (var reader = new StreamReader("result.txt"))
@@ -69,5 +69,6 @@ public class HighscoreManager
         }
     }
     // TODO maybe an update highscore method also?
+
 }
 

@@ -1,4 +1,4 @@
-var io = new ConsoleIO();
+var io = new ConsoleUI();
 var dataAccess = new HighscoreManager();
 var gameLogic = new MooGameLogic();
 

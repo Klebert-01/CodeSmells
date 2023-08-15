@@ -1,7 +1,7 @@
 ﻿namespace MooGame.View;
 
 
-public class ConsoleIO : IUserInterface
+public class ConsoleUI : IUI
 {
 
     public string GetPlayerUsername()
