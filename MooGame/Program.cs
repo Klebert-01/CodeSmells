@@ -23,7 +23,7 @@ while (playOn)
 
     string guess = io.GetInput();  // TODO parse to int directly
 
-    int nGuess = 1;
+    int numberOfGuesses = 1;
     string bbcc = gameLogic.CheckPlayerGuess(correctNumber, guess);
 
     #region DisplayGuess?
@@ -32,7 +32,7 @@ while (playOn)
 
     while (bbcc != "BBBB,")
     {
-        nGuess++;
+        numberOfGuesses++;
         guess = io.GetInput();
         io.Print($"{guess} \n");
         bbcc = gameLogic.CheckPlayerGuess(correctNumber, guess);
@@ -40,11 +40,11 @@ while (playOn)
 
     }
 
-    dataAccess.AddHighscore(userName, nGuess);
-    dataAccess.GetAndDisplayHighscore();
+    dataAccess.AddHighscore(userName, numberOfGuesses);
+    dataAccess.DisplayHighscore();
 
     #region DisplayNoOfGuessesAndAskPlayerAboutNewGame
-    io.Print($"Correct, it took {nGuess} guesses\nContinue?");
+    io.Print($"Correct, it took {numberOfGuesses} guesses\nContinue?");
     string answer = io.GetInput();
     if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
     {
