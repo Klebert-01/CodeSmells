@@ -25,7 +25,7 @@ public class MooGameLogic : IMooGameLogic
 
     public string CheckPlayerGuess(string goal, string guess) //switch places goal and guess as params to guess, goal
     {
-        int cows = 0, bulls = 0; //gör om till eget "bullsandcows" objekt och sätt dessa till default i konstruktorn
+        int cows = 0, bulls = 0;
 
 
 
@@ -34,8 +34,7 @@ public class MooGameLogic : IMooGameLogic
             return "guess must be exactly 4 digits long";
         }
 
-
-        for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++)
         {
             for (int j = 0; j < 4; j++)
             {
