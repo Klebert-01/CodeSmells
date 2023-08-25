@@ -6,13 +6,13 @@ public class ConsoleUI : IUI
 
     public string GetPlayerUsername()
     {
-        string userName = string.Empty;
+        string? userName = string.Empty;
 
         Console.WriteLine("Enter your username: ");
 
         userName = Console.ReadLine();
 
-        if (userName == "")
+        if (userName == "" || userName == null)
         {
             userName = "Unknown player";
         }

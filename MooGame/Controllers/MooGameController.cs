@@ -16,7 +16,6 @@ public class MooGameController
     {
         bool playOn = true;
 
-
         string userName = _ui.GetPlayerUsername();
 
        
@@ -59,7 +58,6 @@ public class MooGameController
             _highscoreManager.AddHighscore(userName, numberOfGuesses);
             _highscoreManager.DisplayHighscore();
 
-            //#region DisplayNoOfGuessesAndAskPlayerAboutNewGame
             _ui.Print($"Correct, it took {numberOfGuesses} guesses\nContinue?");
 
             answer = _ui.GetInput();
