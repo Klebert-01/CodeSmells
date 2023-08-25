@@ -3,6 +3,15 @@
 
 public class MooGameLogic : IMooGameLogic
 {
+    private IUI _ui;
+    public MooGameLogic(IUI ui)
+    {
+        _ui = ui;
+    }
+    public MooGameLogic()
+    {
+
+    }
 
     private bool PlayerGuessIsInvalid(string guess)
     {
@@ -13,17 +22,18 @@ public class MooGameLogic : IMooGameLogic
         return false;
     }
 
+    public bool TogglePracticeRun(string answer)
+    {
+        if (answer == "y")
+        {
+            return true;
+        }
+        return false;
+    }
 
 
     public string CreateRandomNumber()
     {
-        //utkommenterat genererade BBBB,CC buggen vid rätt svar. kolla upp varför
-
-        //Random numberGenerator = new();
-        //int targetNumber = numberGenerator.Next(999, 10000);
-
-        //return targetNumber.ToString();
-
         Random randomGenerator = new Random();
         string goal = "";
         for (int i = 0; i < 4; i++)
@@ -39,6 +49,8 @@ public class MooGameLogic : IMooGameLogic
         }
         return goal;
     }
+
+
 
     public string CheckPlayerGuess(string goal, string guess)
     {
@@ -71,4 +83,5 @@ public class MooGameLogic : IMooGameLogic
 
         return numberOfBullsAndCows;
     }
+
 }

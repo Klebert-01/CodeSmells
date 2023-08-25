@@ -1,6 +1,4 @@
-﻿using MooGame.GameLogic;
-
-namespace MooGame.Controllers;
+﻿namespace MooGame.Controllers;
 
 public class MooGameController
 {
@@ -26,12 +24,20 @@ public class MooGameController
         {
             string correctNumber = _mooGameLogic.CreateRandomNumber();
 
-            _ui.Print("New game:\n");
+            _ui.Print("New game:");
 
-            #region PracticeRunToggle
-            //comment out or remove next line to play real games!
-            _ui.Print($"For practice, correct number is: {correctNumber}\n");
-            #endregion
+            _ui.Print("Practice run?");
+            string answer = _ui.GetInput();
+
+            if (_mooGameLogic.TogglePracticeRun(answer))
+            {
+                _ui.Print($"Correct number is: {correctNumber}\n");
+            }
+            else
+            {
+                _ui.Print("Make your guess:");
+            }
+
 
 
             string guess = _ui.GetInput();
@@ -59,7 +65,7 @@ public class MooGameController
             #region DisplayNoOfGuessesAndAskPlayerAboutNewGame
             _ui.Print($"Correct, it took {numberOfGuesses} guesses\nContinue?");
 
-            string answer = _ui.GetInput();
+            answer = _ui.GetInput();
             if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
             {
                 playOn = false;
