@@ -61,7 +61,7 @@ public class HighscoreManager : IHighscoreManager
             #endregion
         }
     }
-    public void AddHighscore(string userName, int numberOfGuesses)   // TODO should just accept a playerdata object? or a list of playerdata?
+    public void AddHighscore(string userName, int numberOfGuesses)
     {
 
         using (var writer = new StreamWriter("result.txt", append: true))
