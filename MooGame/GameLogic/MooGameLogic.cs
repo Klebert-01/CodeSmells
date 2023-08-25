@@ -22,7 +22,7 @@ public class MooGameLogic : IMooGameLogic
         return false;
     }
 
-    public bool TogglePracticeRun(string answer)
+    public bool TogglePracticeRun(string answer)    //utveckla felhantering för felinput
     {
 
         if (answer.ToUpper() == "Y")

@@ -3,7 +3,11 @@
 public class HighscoreManager : IHighscoreManager
 {
 
-
+    private List<PlayerData> SortHighScoreTable(List<PlayerData> highScores)
+    {
+        highScores.Sort((p1, p2) => p1.Average().CompareTo(p2.Average()));
+        return highScores;
+    }
 
     public List<PlayerData> GetHighscore()
     {
@@ -35,9 +39,8 @@ public class HighscoreManager : IHighscoreManager
                 }
             }
 
-            #region sortHighScores
-            highScore.Sort((p1, p2) => p1.Average().CompareTo(p2.Average()));
-            #endregion
+            SortHighScoreTable(highScore);
+
         }
 
         return highScore;
