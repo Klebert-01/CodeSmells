@@ -8,6 +8,8 @@ public class ConsoleUI : IUI
     {
         string userName = string.Empty;
 
+        Console.WriteLine("Enter your username: ");
+
         userName = Console.ReadLine();
 
         if (userName == "")

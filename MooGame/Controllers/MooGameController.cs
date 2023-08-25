@@ -17,7 +17,6 @@ public class MooGameController
         bool playOn = true;
 
 
-        _ui.Print("Enter your username: ");
         string userName = _ui.GetPlayerUsername();
 
        
