@@ -2,6 +2,8 @@ var ui = new ConsoleUI();
 var dataAccess = new HighscoreManager();
 var gameLogic = new MooGameLogic();
 
+MooGameController gameController = new(dataAccess, gameLogic, ui);
+gameController.StartGame();
 
 bool playOn = true;
 
