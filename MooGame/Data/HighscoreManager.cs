@@ -54,7 +54,6 @@ public class HighscoreManager : IHighscoreManager
             var highScore = GetHighscore();
 
             #region displayHighScores
-            //SHOULD BE IN VIEW? SHOULD RETURN LIST OF PLAYERDATA?
             Console.WriteLine("Player   games average");
 
             foreach (var player in highScore)

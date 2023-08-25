@@ -29,7 +29,7 @@ public class MooGameController
             _ui.Print("Practice run? Y/N");
             string answer = _ui.GetInput();
 
-            if (_mooGameLogic.TogglePracticeRun(answer))
+            if (_mooGameLogic.TogglePracticeRun(answer))    //borde ändra och ta emot svaret ovan if statement, om answer = true => practicerunmetod inom ifblocket
             {
                 _ui.Print($"Correct number is: {correctNumber}\n");
             }
@@ -60,17 +60,23 @@ public class MooGameController
             _highscoreManager.AddHighscore(userName, numberOfGuesses);
             _highscoreManager.DisplayHighscore();
 
-            #region DisplayNoOfGuessesAndAskPlayerAboutNewGame
+            //#region DisplayNoOfGuessesAndAskPlayerAboutNewGame
             _ui.Print($"Correct, it took {numberOfGuesses} guesses\nContinue?");
 
             answer = _ui.GetInput();
-            if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
+
+            if (answer.ToUpper() != "Y")
             {
                 playOn = false;
-
-                //_mooGameLogic.ExitGame(); needs the whileloop anyway to replay game
             }
-            #endregion
+
+            //if (answer != null && answer != "" && answer.Substring(0, 1) == "n") //refactor to if (answer.ToUpper == Y)? 
+            //{
+            //    playOn = false;
+
+            //    //_mooGameLogic.ExitGame(); needs the whileloop anyway to replay game
+            //}
+            //#endregion
         }
     }
 }
