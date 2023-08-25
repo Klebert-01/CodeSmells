@@ -27,12 +27,10 @@ public class MooGameLogic : IMooGameLogic
     {
         int cows = 0, bulls = 0;
 
-        guess += "    ";
-
-        //if (PlayerGuessIsInvalid(guess))
-        //{
-        //    return "guess must be exactly 4 digits long";   //when this triggers 
-        //}
+        if (PlayerGuessIsInvalid(guess))
+        {
+            return "guess must be exactly 4 digits long";
+        }
 
         for (int i = 0; i < 4; i++)
         {
