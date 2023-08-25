@@ -1,4 +1,4 @@
-﻿namespace MooGame.DataAccess;
+﻿namespace MooGame.Data;
 
 public class HighscoreManager : IHighscoreManager
 {
@@ -71,7 +71,6 @@ public class HighscoreManager : IHighscoreManager
             writer.WriteLine($"{userName}#&#{numberOfGuesses}");
         }
     }
-    // TODO maybe an update highscore method also?
 
 }
 
