@@ -56,8 +56,6 @@ public class HighscoreManager : IHighscoreManager
 
             foreach (var player in highScore)
             {
-                //Console.WriteLine(player.Name, player.GamesPlayed, player.Average());
-
                 Console.WriteLine(string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.GamesPlayed, player.Average()));
             }
             #endregion

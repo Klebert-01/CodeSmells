@@ -20,13 +20,13 @@ public class MooGameController
         _ui.Print("Enter your username: ");
         string userName = _ui.GetPlayerUsername();
 
+       
         while (playOn)
         {
             string correctNumber = _mooGameLogic.CreateRandomNumber();
 
             _ui.Print("New game:");
-
-            _ui.Print("Practice run?");
+            _ui.Print("Practice run? Y/N");
             string answer = _ui.GetInput();
 
             if (_mooGameLogic.TogglePracticeRun(answer))
@@ -45,9 +45,7 @@ public class MooGameController
             int numberOfGuesses = 1;
             string bullsAndCowsResult = _mooGameLogic.CheckPlayerGuess(correctNumber, guess);
 
-            #region DisplayBullsAndCows
             _ui.Print($"{bullsAndCowsResult} \n");
-            #endregion
 
             while (bullsAndCowsResult != "BBBB,")
             {
@@ -69,6 +67,8 @@ public class MooGameController
             if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
             {
                 playOn = false;
+
+                //_mooGameLogic.ExitGame(); needs the whileloop anyway to replay game
             }
             #endregion
         }

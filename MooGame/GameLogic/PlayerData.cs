@@ -5,8 +5,8 @@ public class PlayerData
 {
 
     public string Name { get; private set; }
-    public int GamesPlayed { get; private set; }    //only games played for active session? called Nguesses before
-    public int TotalGuesses { get; private set; }   //total guesses per game?
+    public int GamesPlayed { get; private set; }
+    public int TotalGuesses { get; private set; }
 
 
     public PlayerData(string name, int totalGuesses)

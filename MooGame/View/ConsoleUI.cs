@@ -33,8 +33,5 @@ public class ConsoleUI : IUI
     {
         throw new NotImplementedException();
     }
-    public void Exit()
-    {
-        Environment.Exit(0);
-    }
+
 }

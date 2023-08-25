@@ -24,7 +24,8 @@ public class MooGameLogic : IMooGameLogic
 
     public bool TogglePracticeRun(string answer)
     {
-        if (answer == "y")
+
+        if (answer.ToUpper() == "Y")
         {
             return true;
         }
@@ -84,4 +85,8 @@ public class MooGameLogic : IMooGameLogic
         return numberOfBullsAndCows;
     }
 
+    public void ExitGame()
+    {
+        Environment.Exit(0);
+    }
 }
