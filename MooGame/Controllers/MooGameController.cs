@@ -65,18 +65,10 @@ public class MooGameController
 
             answer = _ui.GetInput();
 
-            if (answer.ToUpper() != "Y")
+            if (answer.ToUpper() != "Y")    //this works but does not factor in wrong input, maybe need else if
             {
                 playOn = false;
             }
-
-            //if (answer != null && answer != "" && answer.Substring(0, 1) == "n") //refactor to if (answer.ToUpper == Y)? 
-            //{
-            //    playOn = false;
-
-            //    //_mooGameLogic.ExitGame(); needs the whileloop anyway to replay game
-            //}
-            //#endregion
         }
     }
 }
