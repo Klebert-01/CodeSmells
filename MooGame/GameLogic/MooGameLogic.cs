@@ -17,13 +17,30 @@ public class MooGameLogic : IMooGameLogic
 
     public string CreateRandomNumber()
     {
-        Random numberGenerator = new();
-        int targetNumber = numberGenerator.Next(999, 10000);
+        //utkommenterat genererade BBBB,CC buggen vid rätt svar. kolla upp varför
 
-        return targetNumber.ToString();
+        //Random numberGenerator = new();
+        //int targetNumber = numberGenerator.Next(999, 10000);
+
+        //return targetNumber.ToString();
+
+        Random randomGenerator = new Random();
+        string goal = "";
+        for (int i = 0; i < 4; i++)
+        {
+            int random = randomGenerator.Next(10);
+            string randomDigit = "" + random;
+            while (goal.Contains(randomDigit))
+            {
+                random = randomGenerator.Next(10);
+                randomDigit = "" + random;
+            }
+            goal = goal + randomDigit;
+        }
+        return goal;
     }
 
-    public string CheckPlayerGuess(string goal, string guess) // dela upp
+    public string CheckPlayerGuess(string goal, string guess)
     {
         int cows = 0, bulls = 0;
 
@@ -52,6 +69,6 @@ public class MooGameLogic : IMooGameLogic
 
         string numberOfBullsAndCows = "BBBB".Substring(0, bulls) + "," + "CCCC".Substring(0, cows);
 
-        return numberOfBullsAndCows;    //TODO den här genererar nån bugg. Ibland BBBB,CC vid rätt svar ibland inte
+        return numberOfBullsAndCows;
     }
 }
