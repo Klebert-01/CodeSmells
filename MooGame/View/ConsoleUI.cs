@@ -10,7 +10,7 @@ public class ConsoleUI : IUI
 
         userName = Console.ReadLine();
 
-        if (userName == null)
+        if (userName == "")
         {
             userName = "Unknown player";
         }
