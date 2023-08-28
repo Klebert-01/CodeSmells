@@ -2,7 +2,7 @@
 
 public interface IMooGameLogic
 {
-    bool TogglePracticeRun(string answer);
+    bool TogglePracticeRun();
     string CheckPlayerGuess(string goal, string guess);
     string CreateRandomNumber();
     void ExitGame();

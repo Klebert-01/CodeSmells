@@ -18,16 +18,15 @@ public class MooGameController
 
         string userName = _ui.GetPlayerUsername();
 
-       
+
         while (playOn)
         {
             string correctNumber = _mooGameLogic.CreateRandomNumber();
 
             _ui.Print("New game:");
-            _ui.Print("Practice run? Y/N");
-            string answer = _ui.GetInput();
+            bool practiceRun = _mooGameLogic.TogglePracticeRun();
 
-            if (_mooGameLogic.TogglePracticeRun(answer))    //borde ändra och ta emot svaret ovan if statement, om answer = true => practicerunmetod inom ifblocket
+            if (practiceRun)
             {
                 _ui.Print($"Correct number is: {correctNumber}\n");
             }
@@ -60,7 +59,7 @@ public class MooGameController
 
             _ui.Print($"Correct, it took {numberOfGuesses} guesses\nContinue?");
 
-            answer = _ui.GetInput();
+            string answer = _ui.GetInput();
 
             if (answer.ToUpper() != "Y")    //this works but does not factor in wrong input, maybe need else if
             {

@@ -22,8 +22,11 @@ public class MooGameLogic : IMooGameLogic
         return false;
     }
 
-    public bool TogglePracticeRun(string answer)    //utveckla felhantering för felinput
+    public bool TogglePracticeRun()    //utveckla felhantering för felinput
     {
+        _ui.Print("Practice run? Y/N");
+
+        string answer = _ui.GetInput();
 
         if (answer.ToUpper() == "Y")
         {
