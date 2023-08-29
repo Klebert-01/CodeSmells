@@ -12,12 +12,6 @@ public class HighscoreManager : IHighscoreManager
 
     }
 
-    private List<PlayerData> SortHighScoreTable(List<PlayerData> highScores)
-    {
-        highScores.Sort((p1, p2) => p1.Average().CompareTo(p2.Average()));
-        return highScores;
-    }
-
     public List<PlayerData> GetHighscore()
     {
         var highScore = new List<PlayerData>();
@@ -62,14 +56,13 @@ public class HighscoreManager : IHighscoreManager
 
             var highScore = GetHighscore();
 
-            #region displayHighScores
-            _ui.Print("Player   games average");
+
+            _ui.Print(string.Format("Player   games average"));
 
             foreach (var player in highScore)
             {
                 _ui.Print(string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.GamesPlayed, player.Average()));
             }
-            #endregion
         }
     }
     public void AddHighscore(string userName, int numberOfGuesses)
@@ -81,5 +74,13 @@ public class HighscoreManager : IHighscoreManager
         }
     }
 
+    private List<PlayerData> SortHighScoreTable(List<PlayerData> highScores)
+    {
+        highScores.Sort((p1, p2) => p1.Average().CompareTo(p2.Average()));
+        return highScores;
+    }
+
+
 }
+
 

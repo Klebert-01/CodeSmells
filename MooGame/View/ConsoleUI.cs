@@ -14,7 +14,7 @@ public class ConsoleUI : IUI
 
         if (userName == "" || userName == null)
         {
-            userName = "Unknown player";
+            userName = "Unknown";
         }
 
         return userName;
