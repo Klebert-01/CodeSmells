@@ -2,6 +2,15 @@
 
 public class HighscoreManager : IHighscoreManager
 {
+    private IUI _ui;
+    public HighscoreManager(IUI ui)
+    {
+        _ui = ui;
+    }
+    public HighscoreManager()
+    {
+
+    }
 
     private List<PlayerData> SortHighScoreTable(List<PlayerData> highScores)
     {
@@ -54,11 +63,11 @@ public class HighscoreManager : IHighscoreManager
             var highScore = GetHighscore();
 
             #region displayHighScores
-            Console.WriteLine("Player   games average");
+            _ui.Print("Player   games average");
 
             foreach (var player in highScore)
             {
-                Console.WriteLine(string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.GamesPlayed, player.Average()));
+                _ui.Print(string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.GamesPlayed, player.Average()));
             }
             #endregion
         }

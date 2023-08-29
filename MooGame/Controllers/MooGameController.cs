@@ -24,6 +24,7 @@ public class MooGameController
             string correctNumber = _mooGameLogic.CreateRandomNumber();
 
             _ui.Print("New game:");
+
             bool practiceRun = _mooGameLogic.TogglePracticeRun();
 
             if (practiceRun)
@@ -34,8 +35,6 @@ public class MooGameController
             {
                 _ui.Print("Make your guess:");
             }
-
-
 
             string guess = _ui.GetInput();
 

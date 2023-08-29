@@ -13,13 +13,22 @@ public class MooGameLogic : IMooGameLogic
 
     }
 
-    private bool PlayerGuessIsInvalid(string guess)
+    private bool PlayerGuessIsValid(string guess)
     {
         if (guess.Length != 4)
         {
-            return true;
+            return false;
         }
-        return false;
+
+        foreach (char c in guess)
+        {
+            if (!char.IsDigit(c))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public bool TogglePracticeRun()    //utveckla felhantering för felinput
@@ -49,7 +58,7 @@ public class MooGameLogic : IMooGameLogic
                 random = randomGenerator.Next(10);
                 randomDigit = "" + random;
             }
-            goal = goal + randomDigit;
+            goal += randomDigit;
         }
         return goal;
     }
@@ -58,34 +67,35 @@ public class MooGameLogic : IMooGameLogic
 
     public string CheckPlayerGuess(string goal, string guess)
     {
-        int cows = 0, bulls = 0;
+        int numberOfCows = 0, numberOfBulls = 0;
 
-        if (PlayerGuessIsInvalid(guess))
+        if (PlayerGuessIsValid(guess))
         {
-            return "guess must be exactly 4 digits long";
-        }
-
-        for (int i = 0; i < 4; i++)
-        {
-            for (int j = 0; j < 4; j++)
+            for (int i = 0; i < 4; i++)
             {
-                if (goal[i] == guess[j])
+                for (int j = 0; j < 4; j++)
                 {
-                    if (i == j)
+                    if (goal[i] == guess[j])
                     {
-                        bulls++;
-                    }
-                    else
-                    {
-                        cows++;
+                        if (i == j)
+                        {
+                            numberOfBulls++;
+                        }
+                        else
+                        {
+                            numberOfCows++;
+                        }
                     }
                 }
             }
+            string numberOfBullsAndCows = "BBBB".Substring(0, numberOfBulls) + "," + "CCCC".Substring(0, numberOfCows);
+
+            return numberOfBullsAndCows;
         }
-
-        string numberOfBullsAndCows = "BBBB".Substring(0, bulls) + "," + "CCCC".Substring(0, cows);
-
-        return numberOfBullsAndCows;
+        else
+        {
+            return "guess must be exactly 4 digits long, try again:";
+        }
     }
 
     public void ExitGame()
