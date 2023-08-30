@@ -58,7 +58,7 @@ public class MooGameController
 
             _ui.Print($"Correct, it took {numberOfGuesses} guesses!");
 
-            gameOn = _mooGameLogic.ToggleGameOn(); //maybe change name on method
+            gameOn = _mooGameLogic.ToggleGameOn();
         }
     }
 }
