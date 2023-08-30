@@ -13,24 +13,6 @@ public class MooGameLogic : IMooGameLogic
 
     }
 
-    private bool PlayerGuessIsValid(string guess)
-    {
-        if (guess.Length != 4)
-        {
-            return false;
-        }
-
-        foreach (char c in guess)
-        {
-            if (!char.IsDigit(c))
-            {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
     public bool TogglePracticeRun()
     {
         string answer;
@@ -54,8 +36,6 @@ public class MooGameLogic : IMooGameLogic
             }
         } while (true);
     }
-
-
     public string CreateRandomNumber()
     {
         Random randomGenerator = new Random();
@@ -73,9 +53,6 @@ public class MooGameLogic : IMooGameLogic
         }
         return goal;
     }
-
-
-
     public string CheckPlayerGuess(string goal, string guess)
     {
         int numberOfCows = 0, numberOfBulls = 0;
@@ -108,8 +85,6 @@ public class MooGameLogic : IMooGameLogic
             return "guess must be exactly 4 digits long, try again:";
         }
     }
-
-
     public bool ToggleGameOn()
     {
         string answer;
@@ -133,13 +108,28 @@ public class MooGameLogic : IMooGameLogic
             }
         } while (true);
     }
-
     public void ExitGame()
     {
         Environment.Exit(0);
     }
+
     private string FormatBullsAndCows(int numberOfCows, int numberOfBulls)
     {
         return "BBBB".Substring(0, numberOfBulls) + "," + "CCCC".Substring(0, numberOfCows);
+    }
+    private bool PlayerGuessIsValid(string guess)
+    {
+        if (guess.Length != 4)
+        {
+            return false;
+        }
+        foreach (char c in guess)
+        {
+            if (!char.IsDigit(c))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
