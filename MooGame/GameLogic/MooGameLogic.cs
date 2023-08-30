@@ -99,7 +99,7 @@ public class MooGameLogic : IMooGameLogic
                     }
                 }
             }
-            string numberOfBullsAndCows = "BBBB".Substring(0, numberOfBulls) + "," + "CCCC".Substring(0, numberOfCows);
+            string numberOfBullsAndCows = FormatBullsAndCows(numberOfCows, numberOfBulls);
 
             return numberOfBullsAndCows;
         }
@@ -109,9 +109,9 @@ public class MooGameLogic : IMooGameLogic
         }
     }
 
+
     public bool ToggleGameOn()
     {
-
         string answer;
 
         do
@@ -131,13 +131,15 @@ public class MooGameLogic : IMooGameLogic
             {
                 _ui.Print("Invalid input. Enter 'Y' or 'N'");
             }
-
         } while (true);
-
     }
 
     public void ExitGame()
     {
         Environment.Exit(0);
+    }
+    private string FormatBullsAndCows(int numberOfCows, int numberOfBulls)
+    {
+        return "BBBB".Substring(0, numberOfBulls) + "," + "CCCC".Substring(0, numberOfCows);
     }
 }

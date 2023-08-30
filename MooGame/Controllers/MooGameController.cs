@@ -36,19 +36,19 @@ public class MooGameController
                 _ui.Print("Make your guess:");
             }
 
-            string guess = _ui.GetInput();
+            string playerGuess = _ui.GetInput();
 
             int numberOfGuesses = 1;
-            string bullsAndCowsResult = _mooGameLogic.CheckPlayerGuess(correctNumber, guess);
+            string bullsAndCowsResult = _mooGameLogic.CheckPlayerGuess(correctNumber, playerGuess);
 
             _ui.Print($"{bullsAndCowsResult} \n");
 
             while (bullsAndCowsResult != "BBBB,")
             {
                 numberOfGuesses++;
-                guess = _ui.GetInput();
-                _ui.Print($"{guess} \n");
-                bullsAndCowsResult = _mooGameLogic.CheckPlayerGuess(correctNumber, guess);
+                playerGuess = _ui.GetInput();
+                _ui.Print($"{playerGuess} \n");
+                bullsAndCowsResult = _mooGameLogic.CheckPlayerGuess(correctNumber, playerGuess);
                 _ui.Print($"{bullsAndCowsResult} \n");
 
             }
