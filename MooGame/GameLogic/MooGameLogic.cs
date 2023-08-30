@@ -109,6 +109,33 @@ public class MooGameLogic : IMooGameLogic
         }
     }
 
+    public bool ToggleGameOn()
+    {
+
+        string answer;
+
+        do
+        {
+            _ui.Print("Continue? Y/N");
+            answer = _ui.GetInput().ToUpper();
+
+            if (answer == "Y")
+            {
+                return true;
+            }
+            else if (answer == "N")
+            {
+                return false;
+            }
+            else
+            {
+                _ui.Print("Invalid input. Enter 'Y' or 'N'");
+            }
+
+        } while (true);
+
+    }
+
     public void ExitGame()
     {
         Environment.Exit(0);

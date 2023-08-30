@@ -14,12 +14,12 @@ public class MooGameController
 
     public void StartGame()
     {
-        bool playOn = true;
+        bool gameOn = true;
 
         string userName = _ui.GetPlayerUsername();
 
 
-        while (playOn)
+        while (gameOn)
         {
             string correctNumber = _mooGameLogic.CreateRandomNumber();
 
@@ -56,15 +56,9 @@ public class MooGameController
             _highscoreManager.AddHighscore(userName, numberOfGuesses);
             _highscoreManager.DisplayHighscore();
 
-            _ui.Print($"Correct, it took {numberOfGuesses} guesses\nContinue? Y/N");
+            _ui.Print($"Correct, it took {numberOfGuesses} guesses!");
 
-            string answer = _ui.GetInput();
-
-
-            if (answer.ToUpper() != "Y")    //this works but does not factor in wrong input, maybe need else if
-            {
-                playOn = false;
-            }
+            gameOn = _mooGameLogic.ToggleGameOn(); //maybe change name on method
         }
     }
 }
