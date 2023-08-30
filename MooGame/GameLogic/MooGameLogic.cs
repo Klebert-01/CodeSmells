@@ -31,17 +31,31 @@ public class MooGameLogic : IMooGameLogic
         return true;
     }
 
-    public bool TogglePracticeRun()    //utveckla felhantering för felinput
+    public bool TogglePracticeRun()
     {
-        _ui.Print("Practice run? Y/N");
+        bool validInput = false;
+        string answer;
 
-        string answer = _ui.GetInput();
-
-        if (answer.ToUpper() == "Y")
+        do
         {
-            return true;
-        }
-        return false;
+            _ui.Print("Practice run? Y/N");
+            answer = _ui.GetInput();
+
+            if (answer.ToUpper() == "Y")
+            {
+                return true;
+            }
+            else if (answer.ToUpper() == "N")
+            {
+                return false;
+            }
+            else
+            {
+                _ui.Print("Invalid input. Enter 'Y' or 'N'");
+            }
+        } while (!validInput);
+
+        return validInput;  //this should not be needed, the method can never reach this point but without it i get CS0161 not all code paths return value. 
     }
 
 

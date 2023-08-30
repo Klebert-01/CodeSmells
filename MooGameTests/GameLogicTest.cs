@@ -30,4 +30,5 @@ public class GameLogicTest
             Assert.IsTrue(char.IsDigit(c));
         }
     }
+
 }
