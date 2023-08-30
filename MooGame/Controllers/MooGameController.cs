@@ -56,9 +56,10 @@ public class MooGameController
             _highscoreManager.AddHighscore(userName, numberOfGuesses);
             _highscoreManager.DisplayHighscore();
 
-            _ui.Print($"Correct, it took {numberOfGuesses} guesses\nContinue?");
+            _ui.Print($"Correct, it took {numberOfGuesses} guesses\nContinue? Y/N");
 
             string answer = _ui.GetInput();
+
 
             if (answer.ToUpper() != "Y")    //this works but does not factor in wrong input, maybe need else if
             {

@@ -57,7 +57,7 @@ public class HighscoreManager : IHighscoreManager
             var highScore = GetHighscore();
 
 
-            _ui.Print(string.Format("Player   games average"));
+            _ui.Print("Player   games average");
 
             foreach (var player in highScore)
             {
@@ -76,7 +76,7 @@ public class HighscoreManager : IHighscoreManager
 
     private List<PlayerData> SortHighScoreTable(List<PlayerData> highScores)
     {
-        highScores.Sort((p1, p2) => p1.Average().CompareTo(p2.Average()));
+        highScores.Sort((playerData1, playerData2) => playerData1.Average().CompareTo(playerData2.Average()));
         return highScores;
     }
 
