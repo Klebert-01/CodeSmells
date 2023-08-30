@@ -14,14 +14,14 @@ public class GameLogicTest
     }
 
     [TestMethod]
-    public void CreateRandomNumberCorrectLenght()
+    public void CreateRandomNumber_CorrectLenght()
     {
         string randomNumber = gameLogic.CreateRandomNumber();
 
         Assert.AreEqual(4, randomNumber.Length);
     }
     [TestMethod]
-    public void CreateRandomNumberOnlyNumericValues()
+    public void CreateRandomNumber_OnlyNumericValues()
     {
         string randomNumber = gameLogic.CreateRandomNumber();
 

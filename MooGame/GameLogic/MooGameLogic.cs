@@ -33,19 +33,18 @@ public class MooGameLogic : IMooGameLogic
 
     public bool TogglePracticeRun()
     {
-        bool validInput = false;
         string answer;
 
         do
         {
             _ui.Print("Practice run? Y/N");
-            answer = _ui.GetInput();
+            answer = _ui.GetInput().ToUpper();
 
-            if (answer.ToUpper() == "Y")
+            if (answer == "Y")
             {
                 return true;
             }
-            else if (answer.ToUpper() == "N")
+            else if (answer == "N")
             {
                 return false;
             }
@@ -53,9 +52,7 @@ public class MooGameLogic : IMooGameLogic
             {
                 _ui.Print("Invalid input. Enter 'Y' or 'N'");
             }
-        } while (!validInput);
-
-        return validInput;  //this should not be needed, the method can never reach this point but without it i get CS0161 not all code paths return value. 
+        } while (true);
     }
 
 
