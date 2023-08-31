@@ -40,7 +40,7 @@ public class MooGameController
             string playerGuess = _ui.GetInput();
 
             int numberOfGuesses = 1;
-            string bullsAndCowsResult = _mooGameLogic.CheckPlayerGuess(correctNumber, playerGuess);
+            string bullsAndCowsResult = _mooGameLogic.EvaluateGuessAndReturnNumberOfBullsAndCows(correctNumber, playerGuess);
 
             _ui.Print($"{bullsAndCowsResult} \n");
 
@@ -49,7 +49,7 @@ public class MooGameController
                 numberOfGuesses++;
                 playerGuess = _ui.GetInput();
                 _ui.Print($"{playerGuess} \n");
-                bullsAndCowsResult = _mooGameLogic.CheckPlayerGuess(correctNumber, playerGuess);
+                bullsAndCowsResult = _mooGameLogic.EvaluateGuessAndReturnNumberOfBullsAndCows(correctNumber, playerGuess);
                 _ui.Print($"{bullsAndCowsResult} \n");
 
             }

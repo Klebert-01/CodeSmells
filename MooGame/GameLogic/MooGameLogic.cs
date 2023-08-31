@@ -17,7 +17,7 @@ public class MooGameLogic : IMooGameLogic
     {
         _ui.Print("Practice run? Y/N");
 
-        return AnswerIsYesOrNo();
+        return GetYesOrNoResponse();
     }
     public string CreateRandomNumber()
     {
@@ -36,7 +36,7 @@ public class MooGameLogic : IMooGameLogic
         }
         return goal;
     }
-    public string CheckPlayerGuess(string goal, string guess)
+    public string EvaluateGuessAndReturnNumberOfBullsAndCows(string goal, string guess)
     {
         int numberOfCows = 0, numberOfBulls = 0;
 
@@ -71,7 +71,8 @@ public class MooGameLogic : IMooGameLogic
     public bool ToggleGameOn()
     {
         _ui.Print("Continue? Y/N");
-        return AnswerIsYesOrNo();
+
+        return GetYesOrNoResponse();
     }
     public void ExitGame()
     {
@@ -98,7 +99,7 @@ public class MooGameLogic : IMooGameLogic
         return true;
     }
 
-    private bool AnswerIsYesOrNo() //refactor name to more proper one
+    private bool GetYesOrNoResponse() //refactor name to more proper one
     {
         string answer;
         do
