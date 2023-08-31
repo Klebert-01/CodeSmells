@@ -36,7 +36,7 @@ public class MooGameLogic : IMooGameLogic
         }
         return goal;
     }
-    public string EvaluateGuessAndReturnNumberOfBullsAndCows(string goal, string guess)
+    public string EvaluateGuessAndGetNumberOfBullsAndCows(string goal, string guess) //split into methods for bulls and for cows?
     {
         int numberOfCows = 0, numberOfBulls = 0;
 
@@ -74,7 +74,7 @@ public class MooGameLogic : IMooGameLogic
 
         return GetYesOrNoResponse();
     }
-    public void ExitGame()
+    public void ExitGame()// unused remove if not to be implemented
     {
         Environment.Exit(0);
     }
