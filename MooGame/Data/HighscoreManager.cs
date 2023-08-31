@@ -53,6 +53,7 @@ public class HighscoreManager : IHighscoreManager
 
         using (var reader = new StreamReader("result.txt"))
         {
+            string correctHighScoreFormatting = "{0,-9}{1,5:D}{2,9:F2}";
 
             var highScore = GetHighscore();
 
@@ -60,7 +61,7 @@ public class HighscoreManager : IHighscoreManager
 
             foreach (var player in highScore)
             {
-                _ui.Print(string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.GamesPlayed, player.Average()));
+                _ui.Print(string.Format(correctHighScoreFormatting, player.Name, player.GamesPlayed, player.Average()));
             }
         }
     }

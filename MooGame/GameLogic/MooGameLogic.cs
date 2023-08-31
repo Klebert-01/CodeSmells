@@ -15,26 +15,9 @@ public class MooGameLogic : IMooGameLogic
 
     public bool TogglePracticeRun()
     {
-        string answer;
+        _ui.Print("Practice run? Y/N");
 
-        do
-        {
-            _ui.Print("Practice run? Y/N");
-            answer = _ui.GetInput().ToUpper();
-
-            if (answer == "Y")
-            {
-                return true;
-            }
-            else if (answer == "N")
-            {
-                return false;
-            }
-            else
-            {
-                _ui.Print("Invalid input. Enter 'Y' or 'N'");
-            }
-        } while (true);
+        return AnswerIsYesOrNo();
     }
     public string CreateRandomNumber()
     {
@@ -87,26 +70,8 @@ public class MooGameLogic : IMooGameLogic
     }
     public bool ToggleGameOn()
     {
-        string answer;
-
-        do
-        {
-            _ui.Print("Continue? Y/N");
-            answer = _ui.GetInput().ToUpper();
-
-            if (answer == "Y")
-            {
-                return true;
-            }
-            else if (answer == "N")
-            {
-                return false;
-            }
-            else
-            {
-                _ui.Print("Invalid input. Enter 'Y' or 'N'");
-            }
-        } while (true);
+        _ui.Print("Continue? Y/N");
+        return AnswerIsYesOrNo();
     }
     public void ExitGame()
     {
@@ -131,5 +96,27 @@ public class MooGameLogic : IMooGameLogic
             }
         }
         return true;
+    }
+
+    private bool AnswerIsYesOrNo() //refactor name to more proper one
+    {
+        string answer;
+        do
+        {
+            answer = _ui.GetInput().ToUpper();
+
+            if (answer == "Y")
+            {
+                return true;
+            }
+            else if (answer == "N")
+            {
+                return false;
+            }
+            else
+            {
+                _ui.Print("Invalid input. Enter 'Y' or 'N'");
+            }
+        } while (true);
     }
 }

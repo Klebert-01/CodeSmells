@@ -21,14 +21,14 @@ public class MooGameController
 
         while (gameOn)
         {
-            #region NewGameRound
+            #region StartNewGameRound
             string correctNumber = _mooGameLogic.CreateRandomNumber();
 
             _ui.Print("New game:");
 
-            bool practiceRun = _mooGameLogic.TogglePracticeRun();
+            bool practiceRunOn = _mooGameLogic.TogglePracticeRun();
 
-            if (practiceRun)
+            if (practiceRunOn)
             {
                 _ui.Print($"Correct number is: {correctNumber}\n");
             }
