@@ -14,7 +14,7 @@ public class GameLogicTest
     }
 
     [TestMethod]
-    public void CreateRandomNumber_CorrectLenght()
+    public void CreateRandomNumber_CorrectLength()
     {
         string randomNumber = gameLogic.CreateRandomNumber();
 

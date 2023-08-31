@@ -21,6 +21,7 @@ public class MooGameController
 
         while (gameOn)
         {
+            #region NewGameRound
             string correctNumber = _mooGameLogic.CreateRandomNumber();
 
             _ui.Print("New game:");
@@ -57,6 +58,7 @@ public class MooGameController
             _highscoreManager.DisplayHighscore();
 
             _ui.Print($"Correct, it took {numberOfGuesses} guesses!");
+            #endregion
 
             gameOn = _mooGameLogic.ToggleGameOn();
         }

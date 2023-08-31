@@ -56,7 +56,7 @@ public class HighscoreManager : IHighscoreManager
 
             var highScore = GetHighscore();
 
-            _ui.Print("Player   games average");
+            _ui.Print("Player   Games  Average");
 
             foreach (var player in highScore)
             {
