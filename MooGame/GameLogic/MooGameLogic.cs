@@ -74,11 +74,6 @@ public class MooGameLogic : IMooGameLogic
 
         return GetYesOrNoResponse();
     }
-    public void ExitGame()// unused remove if not to be implemented
-    {
-        Environment.Exit(0);
-    }
-
     private string FormatBullsAndCows(int numberOfCows, int numberOfBulls)
     {
         return "BBBB".Substring(0, numberOfBulls) + "," + "CCCC".Substring(0, numberOfCows);
