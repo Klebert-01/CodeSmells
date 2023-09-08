@@ -93,7 +93,7 @@ public class MooGameLogic : IMooGameLogic
         }
         return true;
     }
-    private bool GetYesOrNoResponse() //refactor name to more proper one
+    private bool GetYesOrNoResponse()
     {
         string answer;
         do

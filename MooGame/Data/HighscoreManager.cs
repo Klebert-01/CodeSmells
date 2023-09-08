@@ -7,6 +7,10 @@ public class HighscoreManager : IHighscoreManager
     {
         _ui = ui;
     }
+    public HighscoreManager()
+    {
+
+    }
 
     public List<PlayerData> GetHighscore()
     {
@@ -24,9 +28,7 @@ public class HighscoreManager : IHighscoreManager
 
                 var player = new PlayerData(name, guesses);
 
-                #region CheckPlayerRanking
                 int playerRank = highScore.IndexOf(player);
-                #endregion
 
                 if (playerRank < 0)
                 {
@@ -41,7 +43,7 @@ public class HighscoreManager : IHighscoreManager
         }
         return highScore;
     }
-    public void DisplayHighscore() // should return the string instead of cw
+    public void DisplayHighscore()
     {
         using (var reader = new StreamReader("result.txt"))
         {

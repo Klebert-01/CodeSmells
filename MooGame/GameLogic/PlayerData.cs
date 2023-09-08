@@ -19,7 +19,7 @@ public class PlayerData
         TotalGuesses += guesses;
         GamesPlayed++;
     }
-    public double Average() //TODO add property average to playerdata
+    public double Average()
     {
         return (double)TotalGuesses / GamesPlayed;
     }

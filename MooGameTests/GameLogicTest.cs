@@ -1,29 +1,28 @@
-﻿using MooGame.GameLogic;
-
+﻿
 namespace MooGameTest;
 
 [TestClass]
 public class GameLogicTest
 {
-    private MooGameLogic gameLogic;
+    private MooGameLogic _gameLogic;
 
     [TestInitialize]
     public void Initialize()
     {
-        gameLogic = new MooGameLogic();
+        _gameLogic = new MooGameLogic();
     }
 
     [TestMethod]
     public void CreateRandomNumber_CorrectLength()
     {
-        string randomNumber = gameLogic.CreateRandomNumber();
+        string randomNumber = _gameLogic.CreateRandomNumber();
 
         Assert.AreEqual(4, randomNumber.Length);
     }
     [TestMethod]
     public void CreateRandomNumber_OnlyNumericValues()
     {
-        string randomNumber = gameLogic.CreateRandomNumber();
+        string randomNumber = _gameLogic.CreateRandomNumber();
 
         foreach (char c in randomNumber)
         {

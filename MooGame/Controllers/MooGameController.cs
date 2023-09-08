@@ -18,7 +18,6 @@ public class MooGameController
 
         string userName = _ui.GetPlayerUsername();
 
-
         while (gameOn)
         {
             string correctNumber = _mooGameLogic.CreateRandomNumber();
