@@ -1,61 +1,117 @@
 ﻿namespace MooGame.GameLogic;
 
 
-public class MooGameLogic
+public class MooGameLogic : IMooGameLogic
 {
-    public void StartNewGame()
+    private IUI _ui;
+    public MooGameLogic(IUI ui)
     {
-        CreateRandomNumber();
+        _ui = ui;
     }
-    
-    private bool PlayerGuessIsInvalid(string guess)
+    public MooGameLogic()
     {
-        if(guess.Length != 4)
-        {
-            return true;
-        }
-        return false;
+
     }
-
-
-
-    public string CreateRandomNumber() 
+    public bool TogglePracticeRun()
     {
-        Random numberGenerator = new();
-        int targetNumber = numberGenerator.Next(999,10000);
+        _ui.Print("Practice run? Y/N");
 
-        return targetNumber.ToString();
+        return GetYesOrNoResponse();
     }
-
-    public string CheckPlayerGuess(string goal, string guess) //switch places goal and guess as params to guess, goal
+    public string CreateRandomNumber()
     {
-        int cows = 0, bulls = 0; //gör om till eget "bullsandcows" objekt och sätt dessa till default i konstruktorn
-
-
-
-        if (PlayerGuessIsInvalid(guess))
-        {
-            return "guess must be exactly 4 digits long";
-        }
-
-
+        Random randomGenerator = new Random();
+        string goal = "";
         for (int i = 0; i < 4; i++)
         {
-            for (int j = 0; j < 4; j++)
+            int random = randomGenerator.Next(10);
+            string randomDigit = "" + random;
+            while (goal.Contains(randomDigit))
             {
-                if (goal[i] == guess[j])
+                random = randomGenerator.Next(10);
+                randomDigit = "" + random;
+            }
+            goal += randomDigit;
+        }
+        return goal;
+    }
+    public string GetNumberOfBullsAndCows(string goal, string guess) //split into methods for bulls and for cows?
+    {
+        int numberOfCows = 0, numberOfBulls = 0;
+
+        if (PlayerGuessIsValid(guess))
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
                 {
-                    if (i == j)
+                    if (goal[i] == guess[j])
                     {
-                        bulls++;
-                    }
-                    else
-                    {
-                        cows++;
+                        if (i == j)
+                        {
+                            numberOfBulls++;
+                        }
+                        else
+                        {
+                            numberOfCows++;
+                        }
                     }
                 }
             }
+            string numberOfBullsAndCows = FormatBullsAndCows(numberOfCows, numberOfBulls);
+
+            return numberOfBullsAndCows;
         }
-        return "BBBB".Substring(0, bulls) + "," + "CCCC".Substring(0, cows);    //TODO den här genererar nån bugg. Ibland BBBB,CC vid rätt svar ibland inte
+        else
+        {
+            return "guess must be exactly 4 digits long, try again:";
+        }
+    }
+    public bool ToggleGameOn()
+    {
+        _ui.Print("Continue? Y/N");
+
+        return GetYesOrNoResponse();
+    }
+
+    private string FormatBullsAndCows(int numberOfCows, int numberOfBulls)
+    {
+        return "BBBB".Substring(0, numberOfBulls) + "," + "CCCC".Substring(0, numberOfCows);
+    }
+    private bool PlayerGuessIsValid(string guess)
+    {
+        if (guess.Length != 4)
+        {
+            return false;
+        }
+        foreach (char c in guess)
+        {
+            if (!char.IsDigit(c))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    private bool GetYesOrNoResponse() //refactor name to more proper one
+    {
+        string answer;
+        do
+        {
+            answer = _ui.GetInput().ToUpper();
+
+            if (answer == "Y")
+            {
+                return true;
+            }
+            else if (answer == "N")
+            {
+                return false;
+            }
+            else
+            {
+                _ui.Print("Invalid input. Enter 'Y' or 'N'");
+            }
+        } while (true);
     }
 }

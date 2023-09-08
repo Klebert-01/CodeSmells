@@ -1,18 +1,22 @@
 ﻿namespace MooGame.View;
 
 
-public class ConsoleIO : IUserInterface
+public class ConsoleUI : IUI
 {
+
+
 
     public string GetPlayerUsername()
     {
-        string userName = string.Empty;
+        string? userName = string.Empty;
+
+        Console.WriteLine("Enter your username: ");
 
         userName = Console.ReadLine();
 
-        if (userName == null)
+        if (userName == "" || userName == null)
         {
-            userName = "Unknown player";
+            userName = "Unknown";
         }
 
         return userName;
@@ -33,8 +37,5 @@ public class ConsoleIO : IUserInterface
     {
         throw new NotImplementedException();
     }
-    public void Exit()
-    {
-        Environment.Exit(0);
-    }
+
 }
