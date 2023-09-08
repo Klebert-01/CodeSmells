@@ -12,7 +12,6 @@ public class MooGameLogic : IMooGameLogic
     {
 
     }
-
     public bool TogglePracticeRun()
     {
         _ui.Print("Practice run? Y/N");
@@ -36,7 +35,7 @@ public class MooGameLogic : IMooGameLogic
         }
         return goal;
     }
-    public string EvaluateGuessAndGetNumberOfBullsAndCows(string goal, string guess) //split into methods for bulls and for cows?
+    public string GetNumberOfBullsAndCows(string goal, string guess) //split into methods for bulls and for cows?
     {
         int numberOfCows = 0, numberOfBulls = 0;
 
@@ -74,6 +73,7 @@ public class MooGameLogic : IMooGameLogic
 
         return GetYesOrNoResponse();
     }
+
     private string FormatBullsAndCows(int numberOfCows, int numberOfBulls)
     {
         return "BBBB".Substring(0, numberOfBulls) + "," + "CCCC".Substring(0, numberOfCows);
@@ -93,7 +93,6 @@ public class MooGameLogic : IMooGameLogic
         }
         return true;
     }
-
     private bool GetYesOrNoResponse() //refactor name to more proper one
     {
         string answer;

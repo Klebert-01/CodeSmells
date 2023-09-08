@@ -3,7 +3,7 @@
 public interface IMooGameLogic
 {
     bool TogglePracticeRun();
-    string EvaluateGuessAndGetNumberOfBullsAndCows(string goal, string guess);
+    string GetNumberOfBullsAndCows(string goal, string guess);
     string CreateRandomNumber();
     bool ToggleGameOn();
 }

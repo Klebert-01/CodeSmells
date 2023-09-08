@@ -7,10 +7,6 @@ public class HighscoreManager : IHighscoreManager
     {
         _ui = ui;
     }
-    public HighscoreManager()
-    {
-
-    }
 
     public List<PlayerData> GetHighscore()
     {
@@ -41,16 +37,12 @@ public class HighscoreManager : IHighscoreManager
                     highScore[playerRank].Update(guesses);
                 }
             }
-
             SortHighScoreTable(highScore);
-
         }
-
         return highScore;
     }
     public void DisplayHighscore() // should return the string instead of cw
     {
-
         using (var reader = new StreamReader("result.txt"))
         {
             string correctHighScoreFormatting = "{0,-9}{1,5:D}{2,9:F2}";
@@ -67,7 +59,6 @@ public class HighscoreManager : IHighscoreManager
     }
     public void AddHighscore(string userName, int numberOfGuesses)
     {
-
         using (var writer = new StreamWriter("result.txt", append: true))
         {
             writer.WriteLine($"{userName}#&#{numberOfGuesses}");
@@ -79,8 +70,6 @@ public class HighscoreManager : IHighscoreManager
         highScores.Sort((playerData1, playerData2) => playerData1.Average().CompareTo(playerData2.Average()));
         return highScores;
     }
-
-
 }
 
 

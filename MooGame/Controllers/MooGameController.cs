@@ -21,7 +21,6 @@ public class MooGameController
 
         while (gameOn)
         {
-            #region StartNewGameRound
             string correctNumber = _mooGameLogic.CreateRandomNumber();
 
             _ui.Print("New game:");
@@ -40,7 +39,7 @@ public class MooGameController
             string playerGuess = _ui.GetInput();
 
             int numberOfGuesses = 1;
-            string bullsAndCowsResult = _mooGameLogic.EvaluateGuessAndGetNumberOfBullsAndCows(correctNumber, playerGuess);
+            string bullsAndCowsResult = _mooGameLogic.GetNumberOfBullsAndCows(correctNumber, playerGuess);
 
             _ui.Print($"{bullsAndCowsResult} \n");
 
@@ -49,7 +48,7 @@ public class MooGameController
                 numberOfGuesses++;
                 playerGuess = _ui.GetInput();
                 _ui.Print($"{playerGuess} \n");
-                bullsAndCowsResult = _mooGameLogic.EvaluateGuessAndGetNumberOfBullsAndCows(correctNumber, playerGuess);
+                bullsAndCowsResult = _mooGameLogic.GetNumberOfBullsAndCows(correctNumber, playerGuess);
                 _ui.Print($"{bullsAndCowsResult} \n");
 
             }
@@ -58,7 +57,6 @@ public class MooGameController
             _highscoreManager.DisplayHighscore();
 
             _ui.Print($"Correct, it took {numberOfGuesses} guesses!");
-            #endregion
 
             gameOn = _mooGameLogic.ToggleGameOn();
         }
